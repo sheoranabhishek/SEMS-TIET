@@ -1,537 +1,585 @@
-<div class="grid grid-cols-12 gap-6">
-    <div class="col-span-12 xxl:col-span-9 grid grid-cols-12 gap-6">
-        <!-- BEGIN: BOXES -->
-        <div class="col-span-12 mt-8">
-            <div class="intro-y flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">
-                    <%=title %>
-                </h2>
-                <div class="dropdown relative xl:ml-auto mt-5 xl:mt-0">
-                    <button class="dropdown-toggle button font-normal border text-white bg-white relative flex items-center text-gray-700"> Select a device <i data-feather="chevron-down" class="w-4 h-4 ml-2"></i> </button>
-                    <div class="dropdown-box mt-10 absolute w-40 top-0 xl:right-0 z-20">
-                        <div class="dropdown-box__content box p-2 overflow-y-auto h-32"> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Device 1</a> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Device 2</a> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Device 3</a> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Photography</a> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Sport</a> </div>
-                    </div>
-                </div>
-                <a href="" class="ml-auto flex text-theme-1"> <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data </a>
-            </div>
-            <div class="grid grid-cols-12 gap-6 mt-5">
-                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                    <div class="report-box zoom-in">
-                        <div class="box p-5">
-                            <div class="flex">
-                                <i data-feather="zap" class="report-box__icon text-theme-10"></i> 
-                                <div class="ml-auto">
-                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer" title="33% Higher than yesterday"> 33% <i data-feather="chevron-up" class="w-4 h-4"></i> </div>
-                                </div>
-                            </div>
-                            <div class="text-3xl font-bold leading-8 mt-6">6.3</div>
-                            <div class="text-base text-gray-600 mt-1">Units Consumed Today</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                    <div class="report-box zoom-in">
-                        <div class="box p-5">
-                            <div class="flex">
-                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i> 
-                                <div class="ml-auto">
-                                    <div class="report-box__indicator bg-theme-6 tooltip cursor-pointer" title="2% Lower than yesterday"> 2% <i data-feather="chevron-down" class="w-4 h-4"></i> </div>
-                                </div>
-                            </div>
-                            <div class="text-3xl font-bold leading-8 mt-6">₹ 36.8</div>
-                            <div class="text-base text-gray-600 mt-1">Today's Cost</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                    <div class="report-box zoom-in">
-                        <div class="box p-5">
-                            <div class="flex">
-                                <i data-feather="monitor" class="report-box__icon text-theme-12"></i> 
-                                <div class="ml-auto">
-                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer" title="12% Higher than last month"> 12% <i data-feather="chevron-up" class="w-4 h-4"></i> </div>
-                                </div>
-                            </div>
-                            <div class="text-3xl font-bold leading-8 mt-6">2.7 Hrs</div>
-                            <div class="text-base text-gray-600 mt-1">Running Time</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                    <div class="report-box zoom-in bg-blue-200">
-                        <div class="box bg-blue-200 p-5">
-                            <div class="flex">
-                                <i data-feather="command" class="report-box__icon text-blue-600"></i> 
-                                <div class="ml-auto">
-                                    <div class="report-box__indicator bg-blue-600 tooltip cursor-pointer" title="22% Higher than last month"> PREDICTION</div>
-                                </div>
-                            </div>
-                            <div class=" ml-auto text-3xl font-bold leading-8 mt-6">152.64 <span class="text-sm"> ( ₹360.27 )</span> </div>
-                            <div class="text-base mt-1">Units & Cost <span class="text-sm">(weekly)</span> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div id="#home-dash" class="grid grid-cols-12 gap-6">
+  <div class="col-span-12 xxl:col-span-9 grid grid-cols-12 gap-6">
+    <!-- BEGIN: BOXES -->
+    <div class="col-span-12 mt-8">
+      <div class="intro-y flex items-center h-10">
+        <div class="flex-col">
+          <h2 class="text-2xl font-medium truncate mr-5">Welcome , <span class="text-theme-20"> <%= user.name%> </span>!</h2>
+          <!-- <h2 class="text-xl font-medium truncate mr-5">General Report for <span class="text-theme-20"></span></h2> -->
         </div>
-        <!-- END: BOXES-->
 
+        <% if(user.devices != 0 ) { %>
+        <div class="dropdown relative xl:ml-auto mt-5 xl:mt-0">
+          <button class="dropdown-toggle button font-normal border text-white bg-white w-32 relative flex justify-between items-center text-gray-700">
+            Overall <i data-feather="chevron-down" class="w-4 h-4 ml-2"></i>
+          </button>
+          <div class="dropdown-box mt-10 absolute w-40 top-0 xl:right-0 z-20">
+            <div class="dropdown-box__content box p-2 overflow-y-auto h-auto">
+              <% user.devices.forEach(device => { %>
 
-        <!-- BEGIN: GRAPH -->
-        <div class="col-span-12 lg:col-span-12 mt-2">
-            <div class="intro-y block sm:flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">
-                    Report
-                </h2>
-                <div class="sm:ml-auto mt-3 sm:mt-0 relative text-gray-700">
-                    <i data-feather="calendar" class="w-4 h-4 z-10 absolute my-auto inset-y-0 ml-3 left-0"></i> 
-                    <input type="text" data-daterange="true" class="datepicker input w-full sm:w-56 box pl-10">
-                </div>
+              <a
+                href="/<%=user._id %>/<%=device.deviceId%> "
+                class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"
+                ><%= device.deviceName %>
+              </a>
+              <% }); %>
             </div>
-            <div class="intro-y box p-5 mt-12 sm:mt-5">
-                <div class="flex flex-col xl:flex-row xl:items-center">
-                    <div class="flex">
-                        <div>
-                            <div class="text-theme-20 text-lg xl:text-xl font-bold">₹15,000</div>
-                            <div class="text-gray-600">This Month</div>
-                        </div>
-                        <div class="w-px h-12 border border-r border-dashed border-gray-300 mx-4 xl:mx-6"></div>
-                        <div>
-                            <div class="text-gray-600 text-lg xl:text-xl font-medium">₹10,000</div>
-                            <div class="text-gray-600">Last Month</div>
-                        </div>
-                    </div>
-                    <div class="dropdown relative xl:ml-auto mt-5 xl:mt-0">
-                        <button class="dropdown-toggle button font-normal border text-white relative flex items-center text-gray-700"> Filter by Category <i data-feather="chevron-down" class="w-4 h-4 ml-2"></i> </button>
-                        <div class="dropdown-box mt-10 absolute w-40 top-0 xl:right-0 z-20">
-                            <div class="dropdown-box__content box p-2 overflow-y-auto h-32"> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">PC & Laptop</a> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Smartphone</a> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Electronic</a> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Photography</a> <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Sport</a> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="report-chart">
-                    <canvas id="report-line-chart" height="160" class="mt-6"></canvas>
-                </div>
-            </div>
+          </div>
         </div>
-        <!-- END: GRAPH -->
+        <a href="/add-device">
+          <button class="button w-32 ml-2 mr-2 mb-2 flex items-center justify-center bg-theme-3 text-white">
+            <i data-feather="plus" class="w-4 h-4 mr-2"></i>Add Device
+          </button>
+        </a>
 
-
-        <!-- BEGIN: PIE 1 -->
-        <div class="col-span-6 sm:col-span-6 lg:col-span-3 mt-2">
-            <div class="intro-y flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">
-                    Weekly Report
-                </h2>
-                <a href="" class="ml-auto text-theme-1 truncate">See all</a> 
-            </div>
-            <div class="intro-y box p-5 mt-5">
-                <canvas class="mt-3" id="report-pie-chart" height="280"></canvas>
-                <div class="mt-8">
-                    <div class="flex items-center">
-                        <div class="w-2 h-2 bg-theme-11 rounded-full mr-3"></div>
-                        <span class="truncate">Device 1 </span> 
-                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                        <span class="font-medium xl:ml-auto">62%</span> 
-                    </div>
-                    <div class="flex items-center mt-4">
-                        <div class="w-2 h-2 bg-theme-1 rounded-full mr-3"></div>
-                        <span class="truncate">Device 2</span> 
-                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                        <span class="font-medium xl:ml-auto">33%</span> 
-                    </div>
-                    <div class="flex items-center mt-4">
-                        <div class="w-2 h-2 bg-theme-12 rounded-full mr-3"></div>
-                        <span class="truncate">Device 3</span> 
-                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                        <span class="font-medium xl:ml-auto">10%</span> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END: PIE 1 -->
-
-
-        <!-- BEGIN: PIE 2 -->
-        <div class="col-span-6 sm:col-span-6 lg:col-span-3 mt-2">
-            <div class="intro-y flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">
-                    Monthly Report
-                </h2>
-                <a href="" class="ml-auto text-theme-1 truncate">See all</a> 
-            </div>
-            <div class="intro-y box p-5 mt-5">
-                <canvas class="mt-3" id="report-donut-chart" height="280"></canvas>
-                <div class="mt-8">
-                    <div class="flex items-center">
-                        <div class="w-2 h-2 bg-theme-11 rounded-full mr-3"></div>
-                        <span class="truncate">Device 1 </span> 
-                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                        <span class="font-medium xl:ml-auto">62%</span> 
-                    </div>
-                    <div class="flex items-center mt-4">
-                        <div class="w-2 h-2 bg-theme-1 rounded-full mr-3"></div>
-                        <span class="truncate">Device 2</span> 
-                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                        <span class="font-medium xl:ml-auto">33%</span> 
-                    </div>
-                    <div class="flex items-center mt-4">
-                        <div class="w-2 h-2 bg-theme-12 rounded-full mr-3"></div>
-                        <span class="truncate">Device 3</span> 
-                        <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                        <span class="font-medium xl:ml-auto">10%</span> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END: PIE 2 -->
-
-        <!-- BEGIN: Table Bottom -->
-        <div class="col-span-12 mt-1">
-            <div class="intro-y block sm:flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">
-                    Your Bill Payments
-                </h2>
-                <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
-                    <button class="button box flex items-center text-gray-700"> <i data-feather="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Export to Excel </button>
-                    <button class="ml-3 button box flex items-center text-gray-700"> <i data-feather="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Export to PDF </button>
-                </div>
-            </div>
-            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                <table class="table table-report sm:mt-2">
-                    <thead>
-                        <tr>
-                            <th class="whitespace-no-wrap">ELECTICITY BOARD</th>
-                            <th class="whitespace-no-wrap">TITLE</th>
-                            <th class="text-center whitespace-no-wrap">AMOUNT</th>
-                            <th class="text-center whitespace-no-wrap">STATUS</th>
-                            <th class="text-center whitespace-no-wrap">ACTIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="intro-x">
-                            <td class="w-40">
-                                <div class="flex justify-center items-center">
-                                    <div class="w-10 h-10 image-fit zoom-in ">
-                                        <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020">
-                                       
-                                    </div>
-                                    <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
-                                </div>
-
-                            </td>
-                            <td>
-                                <a href="" class="font-medium whitespace-no-wrap">Due on May 30 , 2021</a> 
-                                <div class="text-gray-600 text-xs whitespace-no-wrap"> Account No : 4083330000 </div>
-                            </td>
-                            <td class="text-center">₹ 4645.00</td>
-                            <td class="w-40">
-                                <div class="flex items-center justify-center text-theme-6"> <i data-feather="alert-circle" class="w-4 h-4 mr-2"></i> Pending </div>
-                            </td>
-                            <td class="table-report__action w-56">
-                                <div class="flex justify-center items-center">
-                                    <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
-                                    <a class="flex items-center text-blue-600" href=""> <i data-feather="navigation" class="w-4 h-4 mr-1"></i> Pay Now </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="intro-x">
-                            <td class="w-40">
-                                <div class="flex justify-center items-center">
-                                    <div class="w-10 h-10 image-fit zoom-in ">
-                                        <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020">
-                                       
-                                    </div>
-                                    <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
-                                </div>
-
-                            </td>
-                            <td>
-                                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a> 
-                                <div class="text-gray-600 text-xs whitespace-no-wrap"> Account No : 4083330000 </div>
-                            </td>
-                            <td class="text-center">₹ 3871.00</td>
-                            <td class="w-40">
-                                <div class="flex items-center justify-center text-theme-9"> <i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid </div>
-                            </td>
-                            <td class="table-report__action w-56">
-                                <div class="flex justify-center items-center">
-                                    <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
-                                    <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="intro-x">
-                            <td class="w-40">
-                                <div class="flex justify-center items-center">
-                                    <div class="w-10 h-10 image-fit zoom-in ">
-                                        <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020">
-                                       
-                                    </div>
-                                    <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
-                                </div>
-
-                            </td>
-                            <td>
-                                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a> 
-                                <div class="text-gray-600 text-xs whitespace-no-wrap"> Account No : 4083330000 </div>
-                            </td>
-                            <td class="text-center">₹ 3871.00</td>
-                            <td class="w-40">
-                                <div class="flex items-center justify-center text-theme-9"> <i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid </div>
-                            </td>
-                            <td class="table-report__action w-56">
-                                <div class="flex justify-center items-center">
-                                    <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
-                                    <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="intro-x">
-                            <td class="w-40">
-                                <div class="flex justify-center items-center">
-                                    <div class="w-10 h-10 image-fit zoom-in ">
-                                        <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020">
-                                       
-                                    </div>
-                                    <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
-                                </div>
-
-                            </td>
-                            <td>
-                                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a> 
-                                <div class="text-gray-600 text-xs whitespace-no-wrap"> Account No : 4083330000 </div>
-                            </td>
-                            <td class="text-center">₹ 3871.00</td>
-                            <td class="w-40">
-                                <div class="flex items-center justify-center text-theme-9"> <i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid </div>
-                            </td>
-                            <td class="table-report__action w-56">
-                                <div class="flex justify-center items-center">
-                                    <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
-                                    <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="intro-y flex flex-wrap sm:flex-row sm:flex-no-wrap items-center mt-3">
-                <ul class="pagination">
-                    <li>
-                        <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
-                    </li>
-                    <li>
-                        <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
-                    </li>
-                    <li> <a class="pagination__link" href="">...</a> </li>
-                    <li> <a class="pagination__link" href="">1</a> </li>
-                    <li> <a class="pagination__link pagination__link--active" href="">2</a> </li>
-                    <li> <a class="pagination__link" href="">3</a> </li>
-                    <li> <a class="pagination__link" href="">...</a> </li>
-                    <li>
-                        <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
-                    </li>
-                    <li>
-                        <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevrons-right"></i> </a>
-                    </li>
-                </ul>
-                <select class="w-20 input box mt-3 sm:mt-0">
-                    <option>10</option>
-                    <option>25</option>
-                    <option>35</option>
-                    <option>50</option>
-                </select>
-            </div>
-        </div>
-        <!-- END: Table Bottom -->
+        <a href="/" id="refresh-data" class="ml-auto flex text-theme-1"> <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data </a>
+        <% } %>
+      </div>
     </div>
-    <div class="col-span-12 xxl:col-span-3 xxl:border-l border-theme-5 -mb-10 pb-10">
-        <div class="xxl:pl-6 grid grid-cols-12 gap-6">
-            <!-- BEGIN: Important Notes -->
-            <div class="col-span-12 md:col-span-6 xl:col-span-12 xxl:col-span-12 xl:col-start-1 xl:row-start-1 xxl:col-start-auto xxl:row-start-auto mt-3">
-                <div class="intro-x flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-auto flex">
-                        <i data-feather="target" class="report-box__icon text-blue-600 mr-2"></i>  Tip of the day !
-                    </h2>
-                    <button data-carousel="important-notes" data-target="prev" class="slick-navigator button px-2 border border-gray-400 flex items-center text-gray-700 mr-2"> <i data-feather="chevron-left" class="w-4 h-4"></i> </button>
-                    <button data-carousel="important-notes" data-target="next" class="slick-navigator button px-2 border border-gray-400 flex items-center text-gray-700"> <i data-feather="chevron-right" class="w-4 h-4"></i> </button>
+    <% if(user.devices != 0 ) { %>
+    <div class="col-span-12 mt-8">
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+          <div class="report-box zoom-in">
+            <div class="box p-5">
+              <div class="flex">
+                <i data-feather="zap" class="report-box__icon text-theme-10"></i>
+                <div class="ml-auto">
+                  <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer" title="33% Higher than yesterday">
+                    33% <i data-feather="chevron-up" class="w-4 h-4"></i>
+                  </div>
                 </div>
-                <div class="mt-5 intro-x">
-                    <div class="slick-carousel box zoom-in" id="important-notes">
-                        <div class="p-5">
-                            <div class="text-base font-medium truncate">Clean or replace air filters</div>
-                            <div class="text-gray-500 mt-1">20 Hours ago</div>
-                            <div class="text-gray-600 text-justify mt-1"> 
-                                Air conditioners and heaters use the most energy in your home and make up a large part of you electricity bill. They use even more energy when the air filters are dirty for them to work efficiently.</div>
-                            <div class="font-medium flex mt-5">
-                                <button type="button" class="button button--sm bg-gray-200 text-gray-600">Read More</button>
-                                <button type="button" class="button button--sm border border-gray-300 text-gray-600 ml-auto">Dismiss</button>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="font-medium truncate">Use your window shades</div>
-                            <div class="text-gray-500 mt-1">20 Hours ago</div>
-                            <div class="text-gray-600 text-justify mt-1">Close your blinds to keep out the sun during summer and keep them open during winter to bring in warm rays. When you do this you won’t have to use a heater or an air conditioner.</div>
-                            <div class="font-medium flex mt-5">
-                                <button type="button" class="button button--sm bg-gray-200 text-gray-600">Read More</button>
-                                <button type="button" class="button button--sm border border-gray-300 text-gray-600 ml-auto">Dismiss</button>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="font-medium truncate">Unplug battery chargers</div>
-                            <div class="text-gray-500 mt-1">20 Hours ago</div>
-                            <div class="text-gray-600 text-justify mt-1">Unplug chargers as soon as the batteries are fully charged or the chargers are not in use. Most chargers continue to draw power even when not charging a device.</div>
-                            <div class="font-medium flex mt-5">
-                                <button type="button" class="button button--sm bg-gray-200 text-gray-600">Read More</button>
-                                <button type="button" class="button button--sm border border-gray-300 text-gray-600 ml-auto">Dismiss</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <div class="text-3xl font-bold leading-8 mt-6">6.3</div>
+              <div class="text-base text-gray-600 mt-1">Units Consumed Today</div>
             </div>
-            <!-- END: Important Notes -->
-
-            <!-- BEGIN: Transactions -->
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 xxl:col-span-12 mt-3 xxl:mt-8">
-                <div class="intro-x flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                        Last Sessions
-                    </h2>
-                </div>
-                <div class="mt-5">
-                    <div class="intro-x">
-                        <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
-                            <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg">
-                            </div>
-                            <div class="ml-4 mr-auto">
-                                <div class="font-medium">6 May , 2022</div>
-                                <div class="text-gray-600 text-xs">Device 2</div>
-                            </div>
-                            <div class="text-theme-9">+2.7 Hrs</div>
-                        </div>
-                    </div>
-                    <div class="intro-x">
-                        <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
-                            <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg">
-                            </div>
-                            <div class="ml-4 mr-auto">
-                                <div class="font-medium">4 May , 2022</div>
-                                <div class="text-gray-600 text-xs">Device 3</div>
-                            </div>
-                            <div class="text-theme-9">+7.9 Hrs</div>
-                        </div>
-                    </div>
-                    <div class="intro-x">
-                        <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
-                            <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                                <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg">
-                            </div>
-                            <div class="ml-4 mr-auto">
-                                <div class="font-medium">1 May , 2022</div>
-                                <div class="text-gray-600 text-xs">Device 1</div>
-                            </div>
-                            <div class="text-theme-9">+4.8 Hrs</div>
-                        </div>
-                    </div>
-                    <a href="" class="intro-x w-full block text-center rounded-md py-3 border border-dotted border-theme-15 text-theme-16">View More</a> 
-                </div>
-            </div>
-            <!-- END: Transactions -->
-
-
-            <!-- BEGIN: Schedules -->
-            <div class="col-span-12 md:col-span-6 xl:col-span-4 xxl:col-span-12 xl:col-start-1 xl:row-start-2 xxl:col-start-auto xxl:row-start-auto mt-3">
-                <div class="intro-x flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                        Schedules
-                    </h2>
-                    <a href="" class="ml-auto text-theme-1 truncate flex items-center"> <i data-feather="plus" class="w-4 h-4 mr-1"></i> Add New Schedules </a>
-                </div>
-                <div class="mt-5">
-                    <div class="intro-x box">
-                        <div class="p-5">
-                            <div class="flex">
-                                <i data-feather="chevron-left" class="w-5 h-5 text-gray-600"></i> 
-                                <div class="font-medium mx-auto">April</div>
-                                <i data-feather="chevron-right" class="w-5 h-5 text-gray-600"></i> 
-                            </div>
-                            <div class="grid grid-cols-7 gap-4 mt-5 text-center">
-                                <div class="font-medium">Su</div>
-                                <div class="font-medium">Mo</div>
-                                <div class="font-medium">Tu</div>
-                                <div class="font-medium">We</div>
-                                <div class="font-medium">Th</div>
-                                <div class="font-medium">Fr</div>
-                                <div class="font-medium">Sa</div>
-                                <div class="py-1 rounded relative text-gray-600">29</div>
-                                <div class="py-1 rounded relative text-gray-600">30</div>
-                                <div class="py-1 rounded relative text-gray-600">31</div>
-                                <div class="py-1 rounded relative">1</div>
-                                <div class="py-1 rounded relative">2</div>
-                                <div class="py-1 rounded relative">3</div>
-                                <div class="py-1 rounded relative">4</div>
-                                <div class="py-1 rounded relative">5</div>
-                                <div class="py-1 bg-theme-18 rounded relative">6</div>
-                                <div class="py-1 rounded relative">7</div>
-                                <div class="py-1 bg-theme-1 text-white rounded relative">8</div>
-                                <div class="py-1 rounded relative">9</div>
-                                <div class="py-1 rounded relative">10</div>
-                                <div class="py-1 rounded relative">11</div>
-                                <div class="py-1 rounded relative">12</div>
-                                <div class="py-1 rounded relative">13</div>
-                                <div class="py-1 rounded relative">14</div>
-                                <div class="py-1 rounded relative">15</div>
-                                <div class="py-1 rounded relative">16</div>
-                                <div class="py-1 rounded relative">17</div>
-                                <div class="py-1 rounded relative">18</div>
-                                <div class="py-1 rounded relative">19</div>
-                                <div class="py-1 rounded relative">20</div>
-                                <div class="py-1 rounded relative">21</div>
-                                <div class="py-1 rounded relative">22</div>
-                                <div class="py-1 bg-theme-17 rounded relative">23</div>
-                                <div class="py-1 rounded relative">24</div>
-                                <div class="py-1 rounded relative">25</div>
-                                <div class="py-1 rounded relative">26</div>
-                                <div class="py-1 bg-theme-14 rounded relative">27</div>
-                                <div class="py-1 rounded relative">28</div>
-                                <div class="py-1 rounded relative">29</div>
-                                <div class="py-1 rounded relative">30</div>
-                                <div class="py-1 rounded relative text-gray-600">1</div>
-                                <div class="py-1 rounded relative text-gray-600">2</div>
-                                <div class="py-1 rounded relative text-gray-600">3</div>
-                                <div class="py-1 rounded relative text-gray-600">4</div>
-                                <div class="py-1 rounded relative text-gray-600">5</div>
-                                <div class="py-1 rounded relative text-gray-600">6</div>
-                                <div class="py-1 rounded relative text-gray-600">7</div>
-                                <div class="py-1 rounded relative text-gray-600">8</div>
-                                <div class="py-1 rounded relative text-gray-600">9</div>
-                            </div>
-                        </div>
-                        <div class="border-t border-gray-200 p-5">
-                            <div class="flex items-center">
-                                <div class="w-2 h-2 bg-theme-11 rounded-full mr-3"></div>
-                                <span class="truncate">Bill Payment</span> 
-                                <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                                <span class="font-medium xl:ml-auto">23th</span> 
-                            </div>
-                            <div class="flex items-center mt-4">
-                                <div class="w-2 h-2 bg-theme-1 rounded-full mr-3"></div>
-                                <span class="truncate">Air Conditioner Service</span> 
-                                <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                                <span class="font-medium xl:ml-auto">10th</span> 
-                            </div>
-                            <div class="flex items-center mt-4">
-                                <div class="w-2 h-2 bg-theme-12 rounded-full mr-3"></div>
-                                <span class="truncate">Regular Check-up</span> 
-                                <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
-                                <span class="font-medium xl:ml-auto">31th</span> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- END: Schedules -->
+          </div>
         </div>
+        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+          <div class="report-box zoom-in">
+            <div class="box p-5">
+              <div class="flex">
+                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                <div class="ml-auto">
+                  <div class="report-box__indicator bg-theme-6 tooltip cursor-pointer" title="2% Lower than yesterday">
+                    2% <i data-feather="chevron-down" class="w-4 h-4"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="text-3xl font-bold leading-8 mt-6">₹ 36.8</div>
+              <div class="text-base text-gray-600 mt-1">Today's Cost</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+          <div class="report-box zoom-in">
+            <div class="box p-5">
+              <div class="flex">
+                <i data-feather="monitor" class="report-box__icon text-theme-12"></i>
+                <div class="ml-auto">
+                  <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer" title="12% Higher than last month">
+                    12% <i data-feather="chevron-up" class="w-4 h-4"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="text-3xl font-bold leading-8 mt-6">2.7 Hrs</div>
+              <div class="text-base text-gray-600 mt-1">Running Time</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+          <div class="report-box zoom-in bg-blue-200">
+            <div class="box bg-blue-200 p-5">
+              <div class="flex">
+                <i data-feather="command" class="report-box__icon text-blue-600"></i>
+                <div class="ml-auto">
+                  <div class="report-box__indicator bg-blue-600 tooltip cursor-pointer" title="22% Higher than last month">PREDICTION</div>
+                </div>
+              </div>
+              <div class="ml-auto text-3xl font-bold leading-8 mt-6">152.64 <span class="text-sm"> ( ₹360.27 )</span></div>
+              <div class="text-base mt-1">Units & Cost <span class="text-sm">(weekly)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- END: BOXES-->
+
+    <!-- BEGIN: GRAPH -->
+    <div class="col-span-12 lg:col-span-12 mt-2">
+      <div class="intro-y block sm:flex items-center h-10">
+        <h2 class="text-lg font-medium truncate mr-5">Report</h2>
+        <div class="sm:ml-auto mt-3 sm:mt-0 relative text-gray-700">
+          <i data-feather="calendar" class="w-4 h-4 z-10 absolute my-auto inset-y-0 ml-3 left-0"></i>
+          <input type="text" data-daterange="true" class="datepicker input w-full sm:w-56 box pl-10" />
+        </div>
+      </div>
+      <div class="intro-y box p-5 mt-12 sm:mt-5">
+        <div class="flex flex-col xl:flex-row xl:items-center">
+          <div class="flex">
+            <div>
+              <div class="text-theme-20 text-lg xl:text-xl font-bold">₹15,000</div>
+              <div class="text-gray-600">This Month</div>
+            </div>
+            <div class="w-px h-12 border border-r border-dashed border-gray-300 mx-4 xl:mx-6"></div>
+            <div>
+              <div class="text-gray-600 text-lg xl:text-xl font-medium">₹10,000</div>
+              <div class="text-gray-600">Last Month</div>
+            </div>
+          </div>
+          <div class="dropdown relative xl:ml-auto mt-5 xl:mt-0">
+            <button class="dropdown-toggle button font-normal border text-white relative flex items-center text-gray-700">
+              Filter by Category <i data-feather="chevron-down" class="w-4 h-4 ml-2"></i>
+            </button>
+            <div class="dropdown-box mt-10 absolute w-40 top-0 xl:right-0 z-20">
+              <div class="dropdown-box__content box p-2 overflow-y-auto h-32">
+                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">PC & Laptop</a>
+                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Smartphone</a>
+                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Electronic</a>
+                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Photography</a>
+                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Sport</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="report-chart">
+          <canvas id="report-line-chart" height="160" class="mt-6"></canvas>
+        </div>
+      </div>
+    </div>
+    <!-- END: GRAPH -->
+
+    <!-- BEGIN: PIE 1 -->
+    <div class="col-span-6 sm:col-span-6 lg:col-span-3 mt-2">
+      <div class="intro-y flex items-center h-10">
+        <h2 class="text-lg font-medium truncate mr-5">Weekly Report</h2>
+        <a href="" class="ml-auto text-theme-1 truncate">See all</a>
+      </div>
+      <div class="intro-y box p-5 mt-5">
+        <canvas class="mt-3" id="report-pie-chart" height="280"></canvas>
+        <div class="mt-8">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-theme-11 rounded-full mr-3"></div>
+            <span class="truncate">Device 1 </span>
+            <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+            <span class="font-medium xl:ml-auto">62%</span>
+          </div>
+          <div class="flex items-center mt-4">
+            <div class="w-2 h-2 bg-theme-1 rounded-full mr-3"></div>
+            <span class="truncate">Device 2</span>
+            <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+            <span class="font-medium xl:ml-auto">33%</span>
+          </div>
+          <div class="flex items-center mt-4">
+            <div class="w-2 h-2 bg-theme-12 rounded-full mr-3"></div>
+            <span class="truncate">Device 3</span>
+            <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+            <span class="font-medium xl:ml-auto">10%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END: PIE 1 -->
+
+    <!-- BEGIN: PIE 2 -->
+    <div class="col-span-6 sm:col-span-6 lg:col-span-3 mt-2">
+      <div class="intro-y flex items-center h-10">
+        <h2 class="text-lg font-medium truncate mr-5">Monthly Report</h2>
+        <a href="" class="ml-auto text-theme-1 truncate">See all</a>
+      </div>
+      <div class="intro-y box p-5 mt-5">
+        <canvas class="mt-3" id="report-donut-chart" height="280"></canvas>
+        <div class="mt-8">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-theme-11 rounded-full mr-3"></div>
+            <span class="truncate">Device 1 </span>
+            <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+            <span class="font-medium xl:ml-auto">62%</span>
+          </div>
+          <div class="flex items-center mt-4">
+            <div class="w-2 h-2 bg-theme-1 rounded-full mr-3"></div>
+            <span class="truncate">Device 2</span>
+            <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+            <span class="font-medium xl:ml-auto">33%</span>
+          </div>
+          <div class="flex items-center mt-4">
+            <div class="w-2 h-2 bg-theme-12 rounded-full mr-3"></div>
+            <span class="truncate">Device 3</span>
+            <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+            <span class="font-medium xl:ml-auto">10%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END: PIE 2 -->
+
+    <!-- BEGIN: Table Bottom -->
+    <div class="col-span-12 mt-1">
+      <div class="intro-y block sm:flex items-center h-10">
+        <h2 class="text-lg font-medium truncate mr-5">Your Bill Payments</h2>
+        <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
+          <button class="button box flex items-center text-gray-700">
+            <i data-feather="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Export to Excel
+          </button>
+          <button class="ml-3 button box flex items-center text-gray-700">
+            <i data-feather="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Export to PDF
+          </button>
+        </div>
+      </div>
+      <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+        <table class="table table-report sm:mt-2">
+          <thead>
+            <tr>
+              <th class="whitespace-no-wrap">ELECTICITY BOARD</th>
+              <th class="whitespace-no-wrap">TITLE</th>
+              <th class="text-center whitespace-no-wrap">AMOUNT</th>
+              <th class="text-center whitespace-no-wrap">STATUS</th>
+              <th class="text-center whitespace-no-wrap">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="intro-x">
+              <td class="w-40">
+                <div class="flex justify-center items-center">
+                  <div class="w-10 h-10 image-fit zoom-in">
+                    <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020" />
+                  </div>
+                  <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
+                </div>
+              </td>
+              <td>
+                <a href="" class="font-medium whitespace-no-wrap">Due on May 30 , 2021</a>
+                <div class="text-gray-600 text-xs whitespace-no-wrap">Account No : 4083330000</div>
+              </td>
+              <td class="text-center">₹ 4645.00</td>
+              <td class="w-40">
+                <div class="flex items-center justify-center text-theme-6"><i data-feather="alert-circle" class="w-4 h-4 mr-2"></i> Pending</div>
+              </td>
+              <td class="table-report__action w-56">
+                <div class="flex justify-center items-center">
+                  <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
+                  <a class="flex items-center text-blue-600" href=""> <i data-feather="navigation" class="w-4 h-4 mr-1"></i> Pay Now </a>
+                </div>
+              </td>
+            </tr>
+            <tr class="intro-x">
+              <td class="w-40">
+                <div class="flex justify-center items-center">
+                  <div class="w-10 h-10 image-fit zoom-in">
+                    <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020" />
+                  </div>
+                  <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
+                </div>
+              </td>
+              <td>
+                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a>
+                <div class="text-gray-600 text-xs whitespace-no-wrap">Account No : 4083330000</div>
+              </td>
+              <td class="text-center">₹ 3871.00</td>
+              <td class="w-40">
+                <div class="flex items-center justify-center text-theme-9"><i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid</div>
+              </td>
+              <td class="table-report__action w-56">
+                <div class="flex justify-center items-center">
+                  <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
+                  <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
+                </div>
+              </td>
+            </tr>
+            <tr class="intro-x">
+              <td class="w-40">
+                <div class="flex justify-center items-center">
+                  <div class="w-10 h-10 image-fit zoom-in">
+                    <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020" />
+                  </div>
+                  <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
+                </div>
+              </td>
+              <td>
+                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a>
+                <div class="text-gray-600 text-xs whitespace-no-wrap">Account No : 4083330000</div>
+              </td>
+              <td class="text-center">₹ 3871.00</td>
+              <td class="w-40">
+                <div class="flex items-center justify-center text-theme-9"><i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid</div>
+              </td>
+              <td class="table-report__action w-56">
+                <div class="flex justify-center items-center">
+                  <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
+                  <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
+                </div>
+              </td>
+            </tr>
+            <tr class="intro-x">
+              <td class="w-40">
+                <div class="flex justify-center items-center">
+                  <div class="w-10 h-10 image-fit zoom-in">
+                    <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020" />
+                  </div>
+                  <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
+                </div>
+              </td>
+              <td>
+                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a>
+                <div class="text-gray-600 text-xs whitespace-no-wrap">Account No : 4083330000</div>
+              </td>
+              <td class="text-center">₹ 3871.00</td>
+              <td class="w-40">
+                <div class="flex items-center justify-center text-theme-9"><i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid</div>
+              </td>
+              <td class="table-report__action w-56">
+                <div class="flex justify-center items-center">
+                  <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
+                  <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="intro-y flex flex-wrap sm:flex-row sm:flex-no-wrap items-center mt-3">
+        <ul class="pagination">
+          <li>
+            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
+          </li>
+          <li>
+            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
+          </li>
+          <li><a class="pagination__link" href="">...</a></li>
+          <li><a class="pagination__link" href="">1</a></li>
+          <li><a class="pagination__link pagination__link--active" href="">2</a></li>
+          <li><a class="pagination__link" href="">3</a></li>
+          <li><a class="pagination__link" href="">...</a></li>
+          <li>
+            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
+          </li>
+          <li>
+            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevrons-right"></i> </a>
+          </li>
+        </ul>
+        <select class="w-20 input box mt-3 sm:mt-0">
+          <option>10</option>
+          <option>25</option>
+          <option>35</option>
+          <option>50</option>
+        </select>
+      </div>
+    </div>
+    <!-- END: Table Bottom -->
+  </div>
+  <div class="col-span-12 xxl:col-span-3 xxl:border-l border-theme-5 -mb-10 pb-10">
+    <div class="xxl:pl-6 grid grid-cols-12 gap-6">
+      <!-- BEGIN: Important Notes -->
+      <div class="col-span-12 md:col-span-6 xl:col-span-12 xxl:col-span-12 xl:col-start-1 xl:row-start-1 xxl:col-start-auto xxl:row-start-auto mt-3">
+        <div class="intro-x flex items-center h-10">
+          <h2 class="text-lg font-medium truncate mr-auto flex"><i data-feather="target" class="report-box__icon text-blue-600 mr-2"></i> Tip of the day !</h2>
+          <button
+            data-carousel="important-notes"
+            data-target="prev"
+            class="slick-navigator button px-2 border border-gray-400 flex items-center text-gray-700 mr-2"
+          >
+            <i data-feather="chevron-left" class="w-4 h-4"></i>
+          </button>
+          <button data-carousel="important-notes" data-target="next" class="slick-navigator button px-2 border border-gray-400 flex items-center text-gray-700">
+            <i data-feather="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div class="mt-5 intro-x">
+          <div class="slick-carousel box zoom-in" id="important-notes">
+            <div class="p-5">
+              <div class="text-base font-medium truncate">Clean or replace air filters</div>
+              <div class="text-gray-500 mt-1">20 Hours ago</div>
+              <div class="text-gray-600 text-justify mt-1">
+                Air conditioners and heaters use the most energy in your home and make up a large part of you electricity bill. They use even more energy when
+                the air filters are dirty for them to work efficiently.
+              </div>
+              <div class="font-medium flex mt-5">
+                <button type="button" class="button button--sm bg-gray-200 text-gray-600">Read More</button>
+                <button type="button" class="button button--sm border border-gray-300 text-gray-600 ml-auto">Dismiss</button>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="font-medium truncate">Use your window shades</div>
+              <div class="text-gray-500 mt-1">20 Hours ago</div>
+              <div class="text-gray-600 text-justify mt-1">
+                Close your blinds to keep out the sun during summer and keep them open during winter to bring in warm rays. When you do this you won’t have to
+                use a heater or an air conditioner.
+              </div>
+              <div class="font-medium flex mt-5">
+                <button type="button" class="button button--sm bg-gray-200 text-gray-600">Read More</button>
+                <button type="button" class="button button--sm border border-gray-300 text-gray-600 ml-auto">Dismiss</button>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="font-medium truncate">Unplug battery chargers</div>
+              <div class="text-gray-500 mt-1">20 Hours ago</div>
+              <div class="text-gray-600 text-justify mt-1">
+                Unplug chargers as soon as the batteries are fully charged or the chargers are not in use. Most chargers continue to draw power even when not
+                charging a device.
+              </div>
+              <div class="font-medium flex mt-5">
+                <button type="button" class="button button--sm bg-gray-200 text-gray-600">Read More</button>
+                <button type="button" class="button button--sm border border-gray-300 text-gray-600 ml-auto">Dismiss</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END: Important Notes -->
+
+      <!-- BEGIN: Transactions -->
+      <div class="col-span-12 md:col-span-6 xl:col-span-4 xxl:col-span-12 mt-3 xxl:mt-8">
+        <div class="intro-x flex items-center h-10">
+          <h2 class="text-lg font-medium truncate mr-5">Last Sessions</h2>
+        </div>
+        <div class="mt-5">
+          <div class="intro-x">
+            <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
+              <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
+                <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg" />
+              </div>
+              <div class="ml-4 mr-auto">
+                <div class="font-medium">6 May , 2022</div>
+                <div class="text-gray-600 text-xs">Device 2</div>
+              </div>
+              <div class="text-theme-9">+2.7 Hrs</div>
+            </div>
+          </div>
+          <div class="intro-x">
+            <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
+              <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
+                <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg" />
+              </div>
+              <div class="ml-4 mr-auto">
+                <div class="font-medium">4 May , 2022</div>
+                <div class="text-gray-600 text-xs">Device 3</div>
+              </div>
+              <div class="text-theme-9">+7.9 Hrs</div>
+            </div>
+          </div>
+          <div class="intro-x">
+            <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
+              <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
+                <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg" />
+              </div>
+              <div class="ml-4 mr-auto">
+                <div class="font-medium">1 May , 2022</div>
+                <div class="text-gray-600 text-xs">Device 1</div>
+              </div>
+              <div class="text-theme-9">+4.8 Hrs</div>
+            </div>
+          </div>
+          <a href="" class="intro-x w-full block text-center rounded-md py-3 border border-dotted border-theme-15 text-theme-16">View More</a>
+        </div>
+      </div>
+      <!-- END: Transactions -->
+
+      <!-- BEGIN: Schedules -->
+      <div class="col-span-12 md:col-span-6 xl:col-span-4 xxl:col-span-12 xl:col-start-1 xl:row-start-2 xxl:col-start-auto xxl:row-start-auto mt-3">
+        <div class="intro-x flex items-center h-10">
+          <h2 class="text-lg font-medium truncate mr-5">Schedules</h2>
+          <a href="" class="ml-auto text-theme-1 truncate flex items-center"> <i data-feather="plus" class="w-4 h-4 mr-1"></i> Add New Schedules </a>
+        </div>
+        <div class="mt-5">
+          <div class="intro-x box">
+            <div class="p-5">
+              <div class="flex">
+                <i data-feather="chevron-left" class="w-5 h-5 text-gray-600"></i>
+                <div class="font-medium mx-auto">April</div>
+                <i data-feather="chevron-right" class="w-5 h-5 text-gray-600"></i>
+              </div>
+              <div class="grid grid-cols-7 gap-4 mt-5 text-center">
+                <div class="font-medium">Su</div>
+                <div class="font-medium">Mo</div>
+                <div class="font-medium">Tu</div>
+                <div class="font-medium">We</div>
+                <div class="font-medium">Th</div>
+                <div class="font-medium">Fr</div>
+                <div class="font-medium">Sa</div>
+                <div class="py-1 rounded relative text-gray-600">29</div>
+                <div class="py-1 rounded relative text-gray-600">30</div>
+                <div class="py-1 rounded relative text-gray-600">31</div>
+                <div class="py-1 rounded relative">1</div>
+                <div class="py-1 rounded relative">2</div>
+                <div class="py-1 rounded relative">3</div>
+                <div class="py-1 rounded relative">4</div>
+                <div class="py-1 rounded relative">5</div>
+                <div class="py-1 bg-theme-18 rounded relative">6</div>
+                <div class="py-1 rounded relative">7</div>
+                <div class="py-1 bg-theme-1 text-white rounded relative">8</div>
+                <div class="py-1 rounded relative">9</div>
+                <div class="py-1 rounded relative">10</div>
+                <div class="py-1 rounded relative">11</div>
+                <div class="py-1 rounded relative">12</div>
+                <div class="py-1 rounded relative">13</div>
+                <div class="py-1 rounded relative">14</div>
+                <div class="py-1 rounded relative">15</div>
+                <div class="py-1 rounded relative">16</div>
+                <div class="py-1 rounded relative">17</div>
+                <div class="py-1 rounded relative">18</div>
+                <div class="py-1 rounded relative">19</div>
+                <div class="py-1 rounded relative">20</div>
+                <div class="py-1 rounded relative">21</div>
+                <div class="py-1 rounded relative">22</div>
+                <div class="py-1 bg-theme-17 rounded relative">23</div>
+                <div class="py-1 rounded relative">24</div>
+                <div class="py-1 rounded relative">25</div>
+                <div class="py-1 rounded relative">26</div>
+                <div class="py-1 bg-theme-14 rounded relative">27</div>
+                <div class="py-1 rounded relative">28</div>
+                <div class="py-1 rounded relative">29</div>
+                <div class="py-1 rounded relative">30</div>
+                <div class="py-1 rounded relative text-gray-600">1</div>
+                <div class="py-1 rounded relative text-gray-600">2</div>
+                <div class="py-1 rounded relative text-gray-600">3</div>
+                <div class="py-1 rounded relative text-gray-600">4</div>
+                <div class="py-1 rounded relative text-gray-600">5</div>
+                <div class="py-1 rounded relative text-gray-600">6</div>
+                <div class="py-1 rounded relative text-gray-600">7</div>
+                <div class="py-1 rounded relative text-gray-600">8</div>
+                <div class="py-1 rounded relative text-gray-600">9</div>
+              </div>
+            </div>
+            <div class="border-t border-gray-200 p-5">
+              <div class="flex items-center">
+                <div class="w-2 h-2 bg-theme-11 rounded-full mr-3"></div>
+                <span class="truncate">Bill Payment</span>
+                <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+                <span class="font-medium xl:ml-auto">23th</span>
+              </div>
+              <div class="flex items-center mt-4">
+                <div class="w-2 h-2 bg-theme-1 rounded-full mr-3"></div>
+                <span class="truncate">Air Conditioner Service</span>
+                <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+                <span class="font-medium xl:ml-auto">10th</span>
+              </div>
+              <div class="flex items-center mt-4">
+                <div class="w-2 h-2 bg-theme-12 rounded-full mr-3"></div>
+                <span class="truncate">Regular Check-up</span>
+                <div class="h-px flex-1 border border-r border-dashed border-gray-300 mx-3 xl:hidden"></div>
+                <span class="font-medium xl:ml-auto">31th</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END: Schedules -->
+    </div>
+  </div>
+  <% }else { %>
+  <div class="col-span-12 text-center flex-col justify-content-center align-items-center">
+    <img src="/images/no-records.svg" class="w-1/4 my-4 mx-auto" alt="" />
+    <h2 class="text-2xl text-center text-theme-20 mt-16">No Registered Device</h2>
+    <p class="text-sm text-grey-400 my-4">Add your SEMS devices to get a personalised dashboard</p>
+    <div class="mb-6">
+      <!-- <p class="text-red-500 text-xs italic">Please choose a password.</p> -->
+
+      <div class="flex justify-center">
+        <a href="/add-device">
+          <button class="py-2 px-3 rounded-full bg-theme-10 text-white ml-4"><i data-feather="plus"></i></button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <% } %>
 </div>

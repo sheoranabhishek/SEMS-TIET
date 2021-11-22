@@ -13161,12 +13161,6 @@ video {
   background-color: rgba(152, 175, 245, var(--bg-opacity));
 }
 
-.bg-theme-predict{
-        --bg-opacity: 1;
-        background-color: #98AFF5;
-        background-color: rgba(152, 175, 245, var(--bg-opacity));
-}
-
 .bg-theme-28{
   --bg-opacity: 1;
   background-color: #1A389F;

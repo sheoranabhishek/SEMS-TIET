@@ -11,11 +11,18 @@ function createFlash(req) {
 
 function UserController() {
   return {
-    index(req, res) {
-      if (req.session.passport.user) {
-        return res.render("dashboard", { pageTitle: "Dashboard", title: req.session.passport.user });
-      }
-      return res.render("login", { layout: false, pageTitle: "SignIn" });
+    async index(req, res) {
+        
+        if(typeof req.session.passport != "undefined")
+        {
+          const user = await User.findById(req.session.passport.user).populate("devices");
+          if( user )
+            return res.render("dashboard", { pageTitle: "Dashboard", user: user });
+          else
+            return res.render("login", { layout: false, pageTitle: "SignIn" });
+        }
+         else
+            return res.render("login", { layout: false, pageTitle: "SignIn" });
     },
     loginScreen(req, res) {
       return res.render("login", { layout: false, pageTitle: "SignIn" });
@@ -56,7 +63,7 @@ function UserController() {
         .save()
         .then((newUser) => {
           console.log("Successfully Registered!");
-          return res.redirect("/signin");
+          return res.redirect("/");
         })
         .catch((err) => {
           req.flash("Something Went Wrong!");
@@ -87,6 +94,7 @@ function UserController() {
       })(req, res, next);
     },
     logout(req, res) {
+      console.log("Logged Out : " + req.session.passport.user.userName);
       req.logout();
       return res.redirect("/login");
     },

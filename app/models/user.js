@@ -1,5 +1,6 @@
 //represents the database table users
 const mongoose = require("mongoose");
+const Device = require("./device");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -7,7 +8,7 @@ const userSchema = new Schema({
   username: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  devices: [{ type: String }],
+  devices: [{ type: mongoose.Schema.Types.ObjectId, ref: "Device", required: true }],
 });
 
 const User = mongoose.model("User", userSchema);

@@ -1,7 +1,10 @@
 const homeController = require("../app/http/controllers/homeContoller");
 const UserController = require("../app/http/controllers/UserController");
 const guest = require("../app/http/middleware/guest");
+const deviceController = require("../app/http/controllers/deviceController");
 function initRoutes(app) {
+  app.get("/add-device" , deviceController().add);
+  app.post("/add-device" , deviceController().postAdd);
   app.get("/login", guest, UserController().loginScreen);
   app.get("/register", guest, UserController().signupScreen);
   app.get("/dashboard", homeController().index);
