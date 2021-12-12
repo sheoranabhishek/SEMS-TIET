@@ -50,7 +50,10 @@
                   </div>
                 </div>
               </div>
-              <div class="text-3xl font-bold leading-8 mt-6">6.3</div>
+              <div class="text-3xl font-bold leading-8 mt-6">
+                <% var totalUnits = 0; user.devices.forEach(device => { var x = device.unitsConsumed.slice(-1) ; totalUnits += x[0].units;}); %> <%= totalUnits
+                %>
+              </div>
               <div class="text-base text-gray-600 mt-1">Units Consumed Today</div>
             </div>
           </div>
@@ -66,12 +69,15 @@
                   </div>
                 </div>
               </div>
-              <div class="text-3xl font-bold leading-8 mt-6">₹ 36.8</div>
+              <div class="text-3xl font-bold leading-8 mt-6">
+                ₹ <% var totalCost = 0; user.devices.forEach(device => { var x = device.unitsConsumed.slice(-1) ; totalCost += x[0].units*7;}); %> <%= totalCost
+                %>
+              </div>
               <div class="text-base text-gray-600 mt-1">Today's Cost</div>
             </div>
           </div>
         </div>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+        <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
           <div class="report-box zoom-in">
             <div class="box p-5">
               <div class="flex">
@@ -86,7 +92,7 @@
               <div class="text-base text-gray-600 mt-1">Running Time</div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
           <div class="report-box zoom-in bg-blue-200">
             <div class="box bg-blue-200 p-5">
@@ -109,10 +115,6 @@
     <div class="col-span-12 lg:col-span-12 mt-2">
       <div class="intro-y block sm:flex items-center h-10">
         <h2 class="text-lg font-medium truncate mr-5">Report</h2>
-        <div class="sm:ml-auto mt-3 sm:mt-0 relative text-gray-700">
-          <i data-feather="calendar" class="w-4 h-4 z-10 absolute my-auto inset-y-0 ml-3 left-0"></i>
-          <input type="text" data-daterange="true" class="datepicker input w-full sm:w-56 box pl-10" />
-        </div>
       </div>
       <div class="intro-y box p-5 mt-12 sm:mt-5">
         <div class="flex flex-col xl:flex-row xl:items-center">
@@ -125,20 +127,6 @@
             <div>
               <div class="text-gray-600 text-lg xl:text-xl font-medium">₹10,000</div>
               <div class="text-gray-600">Last Month</div>
-            </div>
-          </div>
-          <div class="dropdown relative xl:ml-auto mt-5 xl:mt-0">
-            <button class="dropdown-toggle button font-normal border text-white relative flex items-center text-gray-700">
-              Filter by Category <i data-feather="chevron-down" class="w-4 h-4 ml-2"></i>
-            </button>
-            <div class="dropdown-box mt-10 absolute w-40 top-0 xl:right-0 z-20">
-              <div class="dropdown-box__content box p-2 overflow-y-auto h-32">
-                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">PC & Laptop</a>
-                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Smartphone</a>
-                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Electronic</a>
-                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Photography</a>
-                <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">Sport</a>
-              </div>
             </div>
           </div>
         </div>
@@ -214,157 +202,7 @@
     <!-- END: PIE 2 -->
 
     <!-- BEGIN: Table Bottom -->
-    <div class="col-span-12 mt-1">
-      <div class="intro-y block sm:flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">Your Bill Payments</h2>
-        <div class="flex items-center sm:ml-auto mt-3 sm:mt-0">
-          <button class="button box flex items-center text-gray-700">
-            <i data-feather="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Export to Excel
-          </button>
-          <button class="ml-3 button box flex items-center text-gray-700">
-            <i data-feather="file-text" class="hidden sm:block w-4 h-4 mr-2"></i> Export to PDF
-          </button>
-        </div>
-      </div>
-      <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-        <table class="table table-report sm:mt-2">
-          <thead>
-            <tr>
-              <th class="whitespace-no-wrap">ELECTICITY BOARD</th>
-              <th class="whitespace-no-wrap">TITLE</th>
-              <th class="text-center whitespace-no-wrap">AMOUNT</th>
-              <th class="text-center whitespace-no-wrap">STATUS</th>
-              <th class="text-center whitespace-no-wrap">ACTIONS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="intro-x">
-              <td class="w-40">
-                <div class="flex justify-center items-center">
-                  <div class="w-10 h-10 image-fit zoom-in">
-                    <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020" />
-                  </div>
-                  <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
-                </div>
-              </td>
-              <td>
-                <a href="" class="font-medium whitespace-no-wrap">Due on May 30 , 2021</a>
-                <div class="text-gray-600 text-xs whitespace-no-wrap">Account No : 4083330000</div>
-              </td>
-              <td class="text-center">₹ 4645.00</td>
-              <td class="w-40">
-                <div class="flex items-center justify-center text-theme-6"><i data-feather="alert-circle" class="w-4 h-4 mr-2"></i> Pending</div>
-              </td>
-              <td class="table-report__action w-56">
-                <div class="flex justify-center items-center">
-                  <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
-                  <a class="flex items-center text-blue-600" href=""> <i data-feather="navigation" class="w-4 h-4 mr-1"></i> Pay Now </a>
-                </div>
-              </td>
-            </tr>
-            <tr class="intro-x">
-              <td class="w-40">
-                <div class="flex justify-center items-center">
-                  <div class="w-10 h-10 image-fit zoom-in">
-                    <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020" />
-                  </div>
-                  <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
-                </div>
-              </td>
-              <td>
-                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a>
-                <div class="text-gray-600 text-xs whitespace-no-wrap">Account No : 4083330000</div>
-              </td>
-              <td class="text-center">₹ 3871.00</td>
-              <td class="w-40">
-                <div class="flex items-center justify-center text-theme-9"><i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid</div>
-              </td>
-              <td class="table-report__action w-56">
-                <div class="flex justify-center items-center">
-                  <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
-                  <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
-                </div>
-              </td>
-            </tr>
-            <tr class="intro-x">
-              <td class="w-40">
-                <div class="flex justify-center items-center">
-                  <div class="w-10 h-10 image-fit zoom-in">
-                    <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020" />
-                  </div>
-                  <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
-                </div>
-              </td>
-              <td>
-                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a>
-                <div class="text-gray-600 text-xs whitespace-no-wrap">Account No : 4083330000</div>
-              </td>
-              <td class="text-center">₹ 3871.00</td>
-              <td class="w-40">
-                <div class="flex items-center justify-center text-theme-9"><i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid</div>
-              </td>
-              <td class="table-report__action w-56">
-                <div class="flex justify-center items-center">
-                  <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
-                  <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
-                </div>
-              </td>
-            </tr>
-            <tr class="intro-x">
-              <td class="w-40">
-                <div class="flex justify-center items-center">
-                  <div class="w-10 h-10 image-fit zoom-in">
-                    <img alt="Midone Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/UHBVN.png" title="Uploaded at 10 October 2020" />
-                  </div>
-                  <a href="" class="text-sm ml-3 font-bold">UHBVN</a>
-                </div>
-              </td>
-              <td>
-                <a href="" class="font-medium whitespace-no-wrap">Due on April 12 , 2021</a>
-                <div class="text-gray-600 text-xs whitespace-no-wrap">Account No : 4083330000</div>
-              </td>
-              <td class="text-center">₹ 3871.00</td>
-              <td class="w-40">
-                <div class="flex items-center justify-center text-theme-9"><i data-feather="credit-card" class="w-4 h-4 mr-2"></i> Paid</div>
-              </td>
-              <td class="table-report__action w-56">
-                <div class="flex justify-center items-center">
-                  <!-- <a class="flex items-center mr-3" href=""> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a> -->
-                  <a class="flex items-center text-yellow-600" href=""> <i data-feather="file-text" class="w-4 h-4 mr-1"></i> Download Receipt</a>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="intro-y flex flex-wrap sm:flex-row sm:flex-no-wrap items-center mt-3">
-        <ul class="pagination">
-          <li>
-            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
-          </li>
-          <li>
-            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
-          </li>
-          <li><a class="pagination__link" href="">...</a></li>
-          <li><a class="pagination__link" href="">1</a></li>
-          <li><a class="pagination__link pagination__link--active" href="">2</a></li>
-          <li><a class="pagination__link" href="">3</a></li>
-          <li><a class="pagination__link" href="">...</a></li>
-          <li>
-            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
-          </li>
-          <li>
-            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevrons-right"></i> </a>
-          </li>
-        </ul>
-        <select class="w-20 input box mt-3 sm:mt-0">
-          <option>10</option>
-          <option>25</option>
-          <option>35</option>
-          <option>50</option>
-        </select>
-      </div>
-    </div>
+
     <!-- END: Table Bottom -->
   </div>
   <div class="col-span-12 xxl:col-span-3 xxl:border-l border-theme-5 -mb-10 pb-10">
@@ -430,52 +268,28 @@
       <!-- BEGIN: Transactions -->
       <div class="col-span-12 md:col-span-6 xl:col-span-4 xxl:col-span-12 mt-3 xxl:mt-8">
         <div class="intro-x flex items-center h-10">
-          <h2 class="text-lg font-medium truncate mr-5">Last Sessions</h2>
+          <h2 class="text-lg font-medium truncate mr-5">My Devices</h2>
         </div>
         <div class="mt-5">
+          <% user.devices.forEach(device => { %>
           <div class="intro-x">
             <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
               <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
                 <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg" />
               </div>
               <div class="ml-4 mr-auto">
-                <div class="font-medium">6 May , 2022</div>
-                <div class="text-gray-600 text-xs">Device 2</div>
+                <div class="font-medium"><%=device.deviceId %></div>
+                <div class="text-gray-600 text-xs"><%=device.deviceName %></div>
               </div>
-              <div class="text-theme-9">+2.7 Hrs</div>
             </div>
           </div>
-          <div class="intro-x">
-            <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
-              <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg" />
-              </div>
-              <div class="ml-4 mr-auto">
-                <div class="font-medium">4 May , 2022</div>
-                <div class="text-gray-600 text-xs">Device 3</div>
-              </div>
-              <div class="text-theme-9">+7.9 Hrs</div>
-            </div>
-          </div>
-          <div class="intro-x">
-            <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
-              <div class="w-10 h-10 flex-none image-fit rounded-full overflow-hidden">
-                <img alt="Midone Tailwind HTML Admin Template" src="/images/device.jpg" />
-              </div>
-              <div class="ml-4 mr-auto">
-                <div class="font-medium">1 May , 2022</div>
-                <div class="text-gray-600 text-xs">Device 1</div>
-              </div>
-              <div class="text-theme-9">+4.8 Hrs</div>
-            </div>
-          </div>
-          <a href="" class="intro-x w-full block text-center rounded-md py-3 border border-dotted border-theme-15 text-theme-16">View More</a>
+          <% }); %>
         </div>
       </div>
       <!-- END: Transactions -->
 
       <!-- BEGIN: Schedules -->
-      <div class="col-span-12 md:col-span-6 xl:col-span-4 xxl:col-span-12 xl:col-start-1 xl:row-start-2 xxl:col-start-auto xxl:row-start-auto mt-3">
+      <!-- <div class="col-span-12 md:col-span-6 xl:col-span-4 xxl:col-span-12 xl:col-start-1 xl:row-start-2 xxl:col-start-auto xxl:row-start-auto mt-3">
         <div class="intro-x flex items-center h-10">
           <h2 class="text-lg font-medium truncate mr-5">Schedules</h2>
           <a href="" class="ml-auto text-theme-1 truncate flex items-center"> <i data-feather="plus" class="w-4 h-4 mr-1"></i> Add New Schedules </a>
@@ -562,7 +376,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- END: Schedules -->
     </div>
   </div>

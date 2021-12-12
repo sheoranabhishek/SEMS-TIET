@@ -9,6 +9,9 @@ const userSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   devices: [{ type: mongoose.Schema.Types.ObjectId, ref: "Device", required: true }],
+  totalUnits: [{ date: String, unitsConsumed: Number }],
+  totalCosts: [{ date: String, costCalculated: Number }],
+  predictions: [{ predictedUnits: Number }],
 });
 
 const User = mongoose.model("User", userSchema);

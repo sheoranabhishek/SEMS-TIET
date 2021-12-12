@@ -5,10 +5,14 @@ const User = require("./user");
 
 const deviceSchema = new Schema({
   deviceId: { type: String, required: true },
-  deviceName: { type: String, required: true , default: "DeviceNameDefault"  },
-  room: { type: String, required: true , default: "None" },
-  owner:{type: String , default:""},
-  description: { type: String, required: true , default: "None" },
+  deviceName: { type: String, required: true, default: "DeviceNameDefault" },
+  room: { type: String, required: true, default: "None" },
+  owner: { type: String, default: "" },
+  description: { type: String, required: true, default: "None" },
+  voltageReadings: [{ date: String, readings: { type: Array } }],
+  currentReadings: [{ date: String, readings: { type: Array } }],
+  hoursRunning: [{ date: String, hours: Number }],
+  unitsConsumed: [{ date: String, units: Number }],
 });
 
 const Device = mongoose.model("Device", deviceSchema);

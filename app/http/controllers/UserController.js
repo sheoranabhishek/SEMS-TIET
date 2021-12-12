@@ -12,17 +12,12 @@ function createFlash(req) {
 function UserController() {
   return {
     async index(req, res) {
-        
-        if(typeof req.session.passport != "undefined")
-        {
-          const user = await User.findById(req.session.passport.user).populate("devices");
-          if( user )
-            return res.render("dashboard", { pageTitle: "Dashboard", user: user });
-          else
-            return res.render("login", { layout: false, pageTitle: "SignIn" });
-        }
-         else
-            return res.render("login", { layout: false, pageTitle: "SignIn" });
+      if (typeof req.session.passport != "undefined") {
+        const user = await User.findById(req.session.passport.user).populate("devices");
+        if (user) {
+          return res.render("dashboard", { pageTitle: "Dashboard", user: user });
+        } else return res.render("login", { layout: false, pageTitle: "SignIn" });
+      } else return res.render("login", { layout: false, pageTitle: "SignIn" });
     },
     loginScreen(req, res) {
       return res.render("login", { layout: false, pageTitle: "SignIn" });
