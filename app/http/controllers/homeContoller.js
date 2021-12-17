@@ -19,12 +19,9 @@ function homeController() {
       const units = [];
 
       for (const date of labels) {
-        console.log(date);
-        console.log("after date");
         let currentDateUnits = 0;
         for (device of user.devices) {
           let obj = await device.unitsConsumed.find((o) => o.date === date);
-          console.log(obj);
           currentDateUnits = currentDateUnits + obj.units;
         }
         units.push(currentDateUnits);

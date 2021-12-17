@@ -82,7 +82,7 @@ function UserController() {
       }
     },
     async createDevice(req, res) {
-      const { deviceId, deviceName, room, owner, description, voltageReadings, currentReadings, hoursRunning, unitsConsumed } = req.body;
+      const { deviceId, deviceName, room, owner, description, voltageReadings, currentReadings, hoursRunning, unitsConsumed, prediction } = req.body;
       console.log(deviceId);
       const device = new Device({
         deviceId: deviceId,
@@ -94,6 +94,7 @@ function UserController() {
         currentReadings: currentReadings,
         hoursRunning: hoursRunning,
         unitsConsumed: unitsConsumed,
+        prediction: prediction,
       });
 
       device.voltageReadings[0].readings.push(999);
@@ -108,6 +109,13 @@ function UserController() {
     async addMajorData(req, res) {
       const { date, voltage, current, deviceId, userId } = req.body;
 
+      console.log(req.body);
+
+      if (voltage == 0 && current == 0) {
+        //we donot add this to array.
+        return res.redirect("/");
+      }
+
       //find the user , its device and then add => voltage and readings to the data
       const device = await Device.findById(deviceId);
       let requiredIndex;
@@ -119,10 +127,15 @@ function UserController() {
       }
       device.voltageReadings[requiredIndex].readings.push(voltage);
       device.currentReadings[requiredIndex].readings.push(current);
+
       if (voltage != 0 && current != 0) {
         device.hoursRunning[requiredIndex].hours = device.hoursRunning[requiredIndex].hours + 0.167;
+        device.prediction += 1.4;
       }
       device.unitsConsumed[requiredIndex].units = (voltage * current * device.hoursRunning[requiredIndex].hours) / 1000;
+      var str = device.unitsConsumed[requiredIndex].units.toString(); //convert number to string
+      var result = str.substring(0, 6); // cut six first character
+      device.unitsConsumed[requiredIndex].units = parseFloat(result); // convert it to a number
       await device.save();
     },
   };

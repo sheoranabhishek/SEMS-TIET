@@ -13,13 +13,13 @@ const passport = require("passport");
 const url = process.env.MONGO_URL;
 mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false });
 const connection = mongoose.connection;
-// connection
-//   .once("open", () => {
-//     console.log("Database Connected");
-//   })
-//   .catch((err) => {
-//     console.log("Connection Failed");
-//   });
+connection
+  .once("open", () => {
+    console.log("Database Connected");
+  })
+  .catch((err) => {
+    console.log("Connection Failed");
+  });
 
 //Session Config
 app.use(

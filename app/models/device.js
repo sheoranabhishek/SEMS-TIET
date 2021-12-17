@@ -13,6 +13,7 @@ const deviceSchema = new Schema({
   currentReadings: [{ date: String, readings: { type: Array } }],
   hoursRunning: [{ date: String, hours: Number }],
   unitsConsumed: [{ date: String, units: Number }],
+  prediction: { type: Number },
 });
 
 const Device = mongoose.model("Device", deviceSchema);

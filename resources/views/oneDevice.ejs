@@ -88,7 +88,37 @@
             </div>
           </div>
         </div>
+        <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+          <div class="report-box zoom-in">
+            <div class="box p-5">
+              <div class="flex">
+                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                <div class="ml-auto">
+                  <div class="report-box__indicator bg-theme-6 tooltip cursor-pointer" title="2% Lower than yesterday">
+                    2% <i data-feather="chevron-down" class="w-4 h-4"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="text-3xl font-bold leading-8 mt-6">₹ 7</div>
+              <div class="text-base text-gray-600 mt-1">Cost Per Unit</div>
+            </div>
+          </div>
+        </div> -->
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+          <div class="report-box zoom-in bg-blue-200">
+            <div class="box bg-blue-200 p-5">
+              <div class="flex">
+                <i data-feather="command" class="report-box__icon text-blue-600"></i>
+                <div class="ml-auto">
+                  <div class="report-box__indicator bg-blue-600 tooltip cursor-pointer" title="22% Higher than last month">PREDICTION</div>
+                </div>
+              </div>
+              <div class="ml-auto text-3xl font-bold leading-8 mt-6"><%=device.prediction%></div>
+              <div class="text-base mt-1">Units <span class="text-sm">(weekly)</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
           <div class="report-box zoom-in bg-blue-200">
             <div class="box bg-blue-200 p-5">
               <div class="flex">
@@ -101,7 +131,7 @@
               <div class="text-base mt-1">Units & Cost <span class="text-sm">(weekly)</span></div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- END: BOXES-->
@@ -115,14 +145,10 @@
         <div class="flex flex-col xl:flex-row xl:items-center">
           <div class="flex">
             <div>
-              <div class="text-theme-20 text-lg xl:text-xl font-bold">₹15,000</div>
-              <div class="text-gray-600">This Month</div>
+              <div class="text-theme-20 text-lg xl:text-xl font-bold">Overall Graph for <%= user.name %></div>
+              <div class="text-gray-600"></div>
             </div>
             <div class="w-px h-12 border border-r border-dashed border-gray-300 mx-4 xl:mx-6"></div>
-            <div>
-              <div class="text-gray-600 text-lg xl:text-xl font-medium">₹10,000</div>
-              <div class="text-gray-600">Last Month</div>
-            </div>
           </div>
         </div>
         <div class="report-chart">
@@ -130,10 +156,11 @@
         </div>
       </div>
     </div>
-    <!-- END: GRAPH -->
+    -->
+    <!-- END: GRAPH
 
     <!-- BEGIN: PIE 1 -->
-    <div class="col-span-6 sm:col-span-6 lg:col-span-3 mt-2">
+    <!-- <div class="col-span-6 sm:col-span-6 lg:col-span-3 mt-2">
       <div class="intro-y flex items-center h-10">
         <h2 class="text-lg font-medium truncate mr-5">Weekly Report</h2>
         <a href="" class="ml-auto text-theme-1 truncate">See all</a>
@@ -161,11 +188,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- END: PIE 1 -->
 
     <!-- BEGIN: PIE 2 -->
-    <div class="col-span-6 sm:col-span-6 lg:col-span-3 mt-2">
+    <!-- <div class="col-span-6 sm:col-span-6 lg:col-span-3 mt-2">
       <div class="intro-y flex items-center h-10">
         <h2 class="text-lg font-medium truncate mr-5">Monthly Report</h2>
         <a href="" class="ml-auto text-theme-1 truncate">See all</a>
@@ -193,7 +220,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- END: PIE 2 -->
 
     <!-- BEGIN: Table Bottom -->
