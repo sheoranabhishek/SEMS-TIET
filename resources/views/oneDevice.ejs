@@ -51,7 +51,9 @@
                 </div> -->
               </div>
 
-              <div class="text-3xl font-bold leading-8 mt-6"><% var obj = device.unitsConsumed.slice(-1) %><%= obj[0].units %></div>
+              <div class="text-3xl font-bold leading-8 mt-6">
+                <% var obj = device.unitsConsumed.slice(-1) ; var x = obj[0].units.toString() ; var units = x.substring(0 , 6) %><%= units %>
+              </div>
               <div class="text-base text-gray-600 mt-1">Units Consumed Today</div>
             </div>
           </div>
@@ -67,7 +69,9 @@
                   </div>
                 </div>
               </div>
-              <div class="text-3xl font-bold leading-8 mt-6">₹ <% var cost = obj[0].units*7 %> <%= cost %></div>
+              <div class="text-3xl font-bold leading-8 mt-6">
+                ₹ <% var cost = obj[0].units*7 ; var x = cost.toString() ; cost = x.substring(0 , 5); %> <%= cost %>
+              </div>
               <div class="text-base text-gray-600 mt-1">Today's Cost</div>
             </div>
           </div>
@@ -83,8 +87,10 @@
                   </div>
                 </div>
               </div>
-              <div class="text-3xl font-bold leading-8 mt-6"><%=device.hoursRunning.pop().hours %> Hrs</div>
-              <div class="text-base text-gray-600 mt-1">Running Time</div>
+              <div class="text-3xl font-bold leading-8 mt-6">
+                <% var x = device.hoursRunning.pop().hours.toString(); var result = x.substring(0 , 5) %> <%= result %> Hrs
+              </div>
+              <div class="text-base text-gray-600 mt-1">Today's Running Time</div>
             </div>
           </div>
         </div>
@@ -113,8 +119,8 @@
                   <div class="report-box__indicator bg-blue-600 tooltip cursor-pointer" title="22% Higher than last month">PREDICTION</div>
                 </div>
               </div>
-              <div class="ml-auto text-3xl font-bold leading-8 mt-6"><%=device.prediction%></div>
-              <div class="text-base mt-1">Units <span class="text-sm">(weekly)</span></div>
+              <div class="ml-auto text-3xl font-bold leading-8 mt-6">₹ <% var x = device.prediction.toString(); var pred = x.substring(0 , 5) %> <%=pred%></div>
+              <div class="text-base mt-1">Cost <span class="text-sm">( End of the month )</span></div>
             </div>
           </div>
         </div>

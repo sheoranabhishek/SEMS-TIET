@@ -8,6 +8,7 @@ function initRoutes(app) {
   app.post("/create-device", deviceController().createDevice);
   app.post("/data-major", deviceController().addMajorData);
   app.get("/get-chart-data", homeController().sendChartData);
+  app.get("/get-prediction", deviceController().getPrediction);
   app.get("/login", guest, UserController().loginScreen);
   app.get("/register", guest, UserController().signupScreen);
   app.get("/dashboard", homeController().index);

@@ -130,13 +130,25 @@ function UserController() {
 
       if (voltage != 0 && current != 0) {
         device.hoursRunning[requiredIndex].hours = device.hoursRunning[requiredIndex].hours + 0.167;
-        device.prediction += 1.4;
+        device.prediction += 0.061;
       }
       device.unitsConsumed[requiredIndex].units = (voltage * current * device.hoursRunning[requiredIndex].hours) / 1000;
       var str = device.unitsConsumed[requiredIndex].units.toString(); //convert number to string
       var result = str.substring(0, 6); // cut six first character
       device.unitsConsumed[requiredIndex].units = parseFloat(result); // convert it to a number
       await device.save();
+    },
+    async getPrediction(req, res) {
+      //collecting the data from flask application.
+      var date = Date.now();
+      var url = `https://semstietpredictions.herokuapp.com/${date}`;
+      fetch(url, async (data, err) => {
+        // Saving the data received , into the mongoDB predictions of each device.
+        let devId = window.location.href;
+        let dev = await Device.findById(devId);
+        dev.prediction = data;
+        Device.save();
+      });
     },
   };
 }

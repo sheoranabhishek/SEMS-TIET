@@ -51,8 +51,8 @@
                 </div>
               </div>
               <div class="text-3xl font-bold leading-8 mt-6">
-                <% var totalUnits = 0; user.devices.forEach(device => { var x = device.unitsConsumed.slice(-1) ; totalUnits += x[0].units;}); %> <%= totalUnits
-                %>
+                <% var totalUnits = 0; user.devices.forEach(device => { var x = device.unitsConsumed.slice(-1) ; totalUnits += x[0].units;}); var units =
+                totalUnits.toString() ; units = units.substring( 0 , 6); %> <%= units %>
               </div>
               <div class="text-base text-gray-600 mt-1">Units Consumed Today</div>
             </div>
