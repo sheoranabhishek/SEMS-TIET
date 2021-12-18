@@ -130,7 +130,7 @@ function UserController() {
 
       if (voltage != 0 && current != 0) {
         device.hoursRunning[requiredIndex].hours = device.hoursRunning[requiredIndex].hours + 0.167;
-        device.prediction += 0.061;
+        // device.prediction += 0.061;
       }
       device.unitsConsumed[requiredIndex].units = (voltage * current * device.hoursRunning[requiredIndex].hours) / 1000;
       var str = device.unitsConsumed[requiredIndex].units.toString(); //convert number to string
